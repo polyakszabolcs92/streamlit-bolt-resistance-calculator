@@ -8,7 +8,7 @@ from functions import *
 # STREAMLIT APP
 st.title("Bolt Resistance Calculator EN 1993-1-8")
 
-col_1, col_2 = st.columns(2, vertical_alignment="top")
+col_1, col_2 = st.columns(2, vertical_alignment="top", gap="medium")
 
 # SECTION 1 - MATERIAL
 with col_1:
@@ -32,31 +32,26 @@ with col_1:
 # SECTION 2 - GEOMETRY
 with col_2:
     st.header("GEOMETRY")
+    st.image('./static/bolt_distances.png')
     e1 = st.number_input("e1 - Edge distance, parallel with force direction",
-                        value="min",
-                        step= 1,
-                        min_value=int(np.ceil(min_distance_edge(d))),
-                        help= "Minimum value: 1.2d0; Recommended value: 3.0d0")
+                         step= 1,
+                         min_value=int(np.ceil(min_distance_edge(d))),
+                         help= "Minimum value: 1.2d0; Recommended value: 3.0d0")
     e2 = st.number_input("e2 - Edge distance, perpendicular to force direction",
-                        value="min",
-                        step= 1,
-                        min_value=int(np.ceil(min_distance_edge(d))),
-                        help= "Minimum value: 1.2d0; Recommended value: 1.5d0")
+                         step= 1,
+                         min_value=int(np.ceil(min_distance_edge(d))),
+                         help= "Minimum value: 1.2d0; Recommended value: 1.5d0")
     p1 = st.number_input("p1 - Center distance, parallel with force direction",
-                        value="min",
-                        step= 1,
-                        min_value=int(np.ceil(min_distance_p1(d))),
-                        help= "Minimum value: 2.2d0; Recommended value: 3.75d0")
+                         step= 1,
+                         min_value=int(np.ceil(min_distance_p1(d))),
+                         help= "Minimum value: 2.2d0; Recommended value: 3.75d0")
     p2 = st.number_input("p2 - Center distance, perpendicular to force direction",
-                        value="min",
-                        step= 1,
-                        min_value=int(np.ceil(min_distance_p2(d))),
-                        help= "Minimum value: 2.4d0; Recommended value: 3.0d0")
-    
+                         step= 1,
+                         min_value=int(np.ceil(min_distance_p2(d))),
+                         help= "Minimum value: 2.4d0; Recommended value: 3.0d0")
+
     n_shear = st.number_input("Number of shear planes (n)", min_value=1, step=1)
     shear_thread = st.toggle("Shear plane in thread (True/False)", value=True)
-
-st.markdown("./app/static/bolt_distances.png")
 
 # CALCULATION
 bolt_props = bolt_properties(d, bolt_strength, diameters)
