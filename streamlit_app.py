@@ -77,3 +77,11 @@ df = pd.DataFrame(results,
 
 st.header("RESULTS")
 st.dataframe(df)
+
+# COMMENTS
+expander = st.expander("COMMENTS", expanded=False)
+expander.markdown(
+"""The bolts are **Category A** (bearing type) in shear, and **Category D** (non-preloaded) in tension.
+The resistance values are calculated acc. to the formulas of EN 1993-1-8 Table 3.4. 
+The side notes 1), 2), 3) are not considered.""")
+expander.image('./static/bolt_categories.png')
