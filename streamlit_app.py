@@ -51,7 +51,8 @@ with col_2:
                          help= "Minimum value: 2.4d0; Recommended value: 3.0d0")
 
     n_shear = st.number_input("Number of shear planes (n)", min_value=1, step=1)
-    shear_thread = st.toggle("Shear plane in thread (True/False)", value=True)
+    shear_thread = st.checkbox("Shear plane in thread", value=True,
+                               help= "If checked (True), the shear plane goes through the threaded part of the bolt")
 
 # CALCULATION
 bolt_props = bolt_properties(d, bolt_strength, diameters)
